@@ -1,0 +1,178 @@
+<!--
+100 Days Of Coding Challenge!
+
+Day-83 Task
+Read the following Articles and Code along with it:
+
+Building UI with Components https://nextjs.org/learn/react-foundations/building-ui-with-components
+
+Displaying Data with Props https://nextjs.org/learn/react-foundations/displaying-data-with-props -->
+
+<!---------------------------------------------------------------------------------------------------->
+
+<!--
+1. React Core Concepts
+
+React is a JavaScript library for building user interfaces. Its core concepts revolve around components, which are reusable building blocks of a UI.
+React applications are made of multiple components, which manage their state and render UIs based on that state.
+
+
+2. Components
+
+Components are independent, reusable pieces of UI that can be written as either functions or classes in React.
+Each component returns a portion of the UI that React can render.
+
+Example: -->
+
+
+
+function Welcome() {
+  return <h1>Welcome to React!</h1>;
+}
+
+<!--
+This simple functional component returns an h1 element that displays "Welcome to React!"
+
+
+3. Creating Components
+
+In React, you can create a component by defining a function or class that returns a React element.
+
+Example: -->
+
+
+
+function Header() {
+  return <header>This is the header</header>;
+}
+
+<!--
+This Header component can be reused across different parts of the app.
+
+
+4. Nesting Components
+
+Components can be nested inside each other. This allows you to create complex UIs by combining smaller, simpler components.
+
+Example: -->
+
+
+function App() {
+  return (
+    <div>
+      <Header />
+      <MainContent />
+      <Footer />
+    </div>
+  );
+}
+
+function MainContent() {
+  return <p>This is the main content.</p>;
+}
+
+function Footer() {
+  return <footer>This is the footer.</footer>;
+}
+
+<!--
+Here, the App component nests Header, MainContent, and Footer components, showing how components work together.
+
+
+5. Component Trees
+
+The UI of a React application is structured as a component tree. The top-most component is often referred to as the "root" component,
+and it branches out into smaller nested components.
+
+Example: In the example, App is the root of the tree, and it branches into three child components: Header, MainContent, and Footer. -->
+
+
+App
+ ├─ Header
+ ├─ MainContent
+ └─ Footer
+
+<!-- This tree structure allows for easy management of complex UIs by breaking them into manageable pieces. -->
+
+<!---------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+<!--
+1. Displaying Data with Props
+Props (short for "properties") are used to pass data from a parent component to a child component in React.
+This allows components to be more reusable and dynamic by accepting different values.
+
+Example: -->
+
+function Greeting(props) {
+  return <h1>Hello, {props.name}!</h1>;
+}
+
+function App() {
+  return <Greeting name="Putin" />;
+}
+
+<!-- In this example, the Greeting component takes props.name as an input and displays a personalized greeting.
+The App component passes the name "Syed" to the Greeting component via props.
+
+2. Using Props
+You can pass any type of data through props, including strings, numbers, arrays, and objects. The child component accesses these props using props.propName.
+
+Example: -->
+
+function UserProfile(props) {
+  return (
+    <div>
+      <h2>{props.user.name}</h2>
+      <p>Age: {props.user.age}</p>
+    </div>
+  );
+}
+
+function App() {
+  const user = { name: "Putin", age: 25 };
+  return <UserProfile user={user} />;
+}
+
+<!--Here, the UserProfile component receives an object user as a prop and displays the name and age of the user.
+
+3. Using Variables in JSX
+In JSX, you can embed JavaScript expressions by wrapping them in curly braces {}. This allows you to display dynamic values or execute simple expressions inside JSX.
+
+Example: -->
+
+function App() {
+  const name = "Putin";
+  const isLoggedIn = true;
+
+  return (
+    <div>
+      <h1>Hello, {name}!</h1>
+      {isLoggedIn ? <p>Welcome back!</p> : <p>Please sign in.</p>}
+    </div>
+  );
+}
+
+<!-- In this example, the name variable and the isLoggedIn boolean are used inside JSX to display dynamic content.
+
+4. Iterating Through Lists
+You can display lists of data by using the map() function in JSX to iterate through arrays.
+Each item in the array should be rendered inside a component, and each element needs a unique key to help React optimize the rendering.
+
+Example: -->
+
+function TodoList(props) {
+  return (
+    <ul>
+      {props.todos.map((todo, index) => (
+        <li key={index}>{todo}</li>
+      ))}
+    </ul>
+  );
+}
+
+function App() {
+  const todos = ["Learn React", "Build Projects", "Practice Coding"];
+  return <TodoList todos={todos} />;
+}
+
+<!--In this example, the TodoList component receives an array of tasks as props and iterates over the list to display each item in an unordered list. -->
